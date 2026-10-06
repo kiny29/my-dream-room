@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Dream Room Studio (Copy)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+@font-face{
+  font-family:'DoolgiMayoGothic';
+  src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2') format('woff2');
+  font-weight:normal;
+  font-style:normal;
+  font-display:swap;
+}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{font-family:'Plus Jakarta Sans','Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#f8fafc;color:#1e293b;margin:0;-webkit-user-select:none;user-select:none}
+h1,h2,.fh{font-family:'Plus Jakarta Sans','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+.w-pink{background:linear-gradient(#FFD1DC,#FFE4E1)}.w-blue{background:linear-gradient(#BEE3F8,#EBF8FF)}.w-green{background:linear-gradient(#C6F6D5,#F0FFF4)}
+.w-tile{background:#F8FAFC linear-gradient(#CBD5E1 1px,transparent 1px) 0 0/20px 20px,linear-gradient(90deg,#CBD5E1 1px,transparent 1px) 0 0/20px 20px}
+.w-sky{background:linear-gradient(#7DD3FC,#BAE6FD 70%,#E0F2FE)}.w-yellow{background:linear-gradient(#FEFCBF,#FFFFF0)}.w-bath{background:#E0F2FE linear-gradient(#93C5FD 1px,transparent 1px) 0 0/16px 16px,linear-gradient(90deg,#93C5FD 1px,transparent 1px) 0 0/16px 16px}
+.f-wood{background:repeating-linear-gradient(90deg,rgba(0,0,0,.05) 0 30px,transparent 30px 60px),linear-gradient(#D69E2E,#B7791F)}
+.f-tile{
+background-color:#e8edf1;
+background-image:
+  linear-gradient(#cbd5dc 2px,transparent 2px),
+  linear-gradient(90deg,#cbd5dc 2px,transparent 2px),
+  linear-gradient(135deg,rgba(255,255,255,.35),rgba(255,255,255,0) 45%);
+background-size:54px 54px,54px 54px,100% 100%;
+}
+.f-carpet{
+background-color:#c9b8a6;
+background-image:
+  linear-gradient(105deg,rgba(255,255,255,.11) 1px,transparent 1px),
+  linear-gradient(75deg,rgba(86,67,50,.07) 1px,transparent 1px),
+  linear-gradient(#d1c2b2,#c4b19f);
+background-size:22px 22px,26px 26px,100% 100%;
+}
+.f-grass{
+background-color:#69b95f;
+background-image:
+  linear-gradient(75deg,transparent 46%,rgba(45,111,49,.22) 48%,rgba(45,111,49,.22) 52%,transparent 54%),
+  linear-gradient(105deg,transparent 46%,rgba(255,255,255,.10) 48%,rgba(255,255,255,.10) 51%,transparent 53%),
+  linear-gradient(#76c96d,#5fac57);
+background-size:38px 30px,46px 34px,100% 100%;
+}
+.item{position:absolute;touch-action:none;cursor:grab}
+.item.sel{outline:2px dashed #2563eb;outline-offset:4px}
+.item .rh{display:none;position:absolute;right:-9px;bottom:-9px;width:20px;height:20px;border-radius:99px;background:#2563eb;border:2px solid #fff;cursor:se-resize}
+.item.sel .rh{display:block}
+.blank{border-bottom:2px solid #cbd5e1;background:#fff;padding:2px 8px;color:#1e293b;font-weight:600;border-radius:3px 3px 0 0;min-width:0;flex:1 1 180px;user-select:text;-webkit-user-select:text}
+.blank:focus{outline:none;border-bottom-color:#2563eb;background:#f8fafc}
+.tab{padding:6px 8px;border-radius:5px;font-size:12px;font-weight:600;white-space:nowrap;background:transparent;border:1px solid transparent;color:#475569}
+.tab.on{background:#e2e8f0;border-color:#cbd5e1;color:#0f172a}
+.rt{padding:8px 4px;border-radius:6px;font-size:12px;font-weight:600;background:transparent;border:1px solid transparent;color:#475569}
+.rt.on{background:#eff6ff;border-color:#93c5fd;color:#1d4ed8}
+
+.primary-action{background:#2563eb;color:#fff;transition:background .15s ease}
+.primary-action:hover{background:#1d4ed8}
+.secondary-action{background:#fff;color:#334155;border:1px solid #cbd5e1;transition:background .15s ease,border-color .15s ease}
+.secondary-action:hover{background:#f8fafc;border-color:#94a3b8}
+
+#tabs .tab.on{background:#e2e8f0;border-color:#cbd5e1;color:#0f172a}
+#tabs .tab:hover,#floors .tab:hover,.rt:hover{background:#f1f5f9}
+#grid button{border:1px solid transparent;background:transparent;border-radius:6px;transition:background .12s ease,border-color .12s ease}
+#grid button:hover{background:#f1f5f9;border-color:#e2e8f0}
+.tool-section-title{font-size:13px;font-weight:700;color:#334155;letter-spacing:.01em}
+</style>
+</head>
+<body>
+<header class="bg-white/95 border-b border-slate-200 sticky top-0 z-40" style="top:env(safe-area-inset-top,0px)">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div><h1 class="text-xl sm:text-2xl font-bold tracking-tight">MY DREAM ROOM</h1>
+    <p class="text-xs text-slate-500">Design a room and describe it in English.</p></div>
+    <div class="flex items-center gap-2">
+      <button id="undo" disabled class="px-3 py-2 text-sm font-medium text-slate-500 bg-white border border-slate-200 rounded-md hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed">↶ Undo</button>
+      <button id="reset" class="px-3 py-2 text-sm font-medium text-slate-500 bg-white border border-slate-200 rounded-md hover:bg-slate-50">↺ Reset</button>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 py-4 grid grid-cols-1 lg:grid-cols-12 gap-4">
+  <section class="lg:col-span-4 bg-white border border-slate-200 rounded-lg overflow-hidden self-start">
+    <div class="p-4 space-y-3 border-b border-slate-200">
+      <h2 class="tool-section-title">Select Room</h2>
+      <div class="grid grid-cols-5 gap-1.5" id="rooms"></div>
+      <div class="text-[11px] font-semibold uppercase tracking-wide text-slate-400">Wall</div>
+      <div class="grid grid-cols-6 gap-2" id="walls"></div>
+      <div class="text-[11px] font-semibold uppercase tracking-wide text-slate-400">Floor</div>
+      <div class="grid grid-cols-4 gap-1.5" id="floors"></div>
+    </div>
+    <div class="p-4">
+      <div class="flex items-baseline justify-between gap-2 mb-2"><h2 class="tool-section-title">Furniture Stickers</h2><span class="text-[11px] font-medium text-slate-400">Tap to add</span></div>
+      <div class="flex gap-1 overflow-x-auto pb-2 mb-2" id="tabs"></div>
+      <div id="grid" class="grid grid-cols-3 gap-2 overflow-y-auto" style="max-height:330px"></div>
+    </div>
+  </section>
+
+  <section class="lg:col-span-8 flex flex-col gap-4">
+    <div id="card" class="bg-white p-4 sm:p-5 rounded-lg border border-slate-200 flex flex-col gap-4">
+      <div class="flex items-center justify-between">
+        <div class="text-lg font-semibold tracking-tight text-slate-800 whitespace-nowrap shrink-0" id="title">🏡 My Dream Bedroom</div>
+      </div>
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-slate-500 border-b border-slate-100 pb-3" style="-webkit-user-select:text;user-select:text">
+        <label class="flex items-center gap-1">Grade <input id="sGrade" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="학년" maxlength="1" autocomplete="off" class="blank" style="flex:none;width:2.8rem;text-align:center;padding:2px 4px"></label>
+        <label class="flex items-center gap-1">Class <input id="sCls" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="반" maxlength="2" autocomplete="off" class="blank" style="flex:none;width:2.8rem;text-align:center;padding:2px 4px"></label>
+        <label class="flex items-center gap-1">Team <input id="sTeam" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="모둠" maxlength="2" autocomplete="off" class="blank" style="flex:none;width:2.8rem;text-align:center;padding:2px 4px"></label>
+        <label class="flex items-center gap-1">Number <input id="sNum" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="번호" maxlength="2" autocomplete="off" class="blank" style="flex:none;width:2.8rem;text-align:center;padding:2px 4px"></label>
+        <label class="flex items-center gap-1">Name <input id="sName" placeholder="이름" maxlength="12" autocomplete="off" class="blank" style="flex:none;width:6.5rem;text-align:center;padding:2px 6px"></label>
+      </div>
+
+      <div class="relative">
+        <div id="tb" class="hidden absolute top-2 left-1/2 -translate-x-1/2 z-30 bg-slate-900/95 text-white px-3 py-1.5 rounded-lg text-xs flex items-center gap-2 flex-wrap justify-center" data-html2canvas-ignore>
+          <span id="tname" class="text-amber-300 font-medium pr-2 border-r border-slate-600"></span>
+          <span id="hues" class="flex gap-1 pr-2 border-r border-slate-600"></span>
+          <button data-a="rot" title="Rotate">⟳</button><button data-a="flip" title="Flip">⇆</button>
+          <button data-a="up">Up</button><button data-a="down">Down</button>
+          <button data-a="del" class="text-rose-400">🗑</button>
+        </div>
+        <div id="room" class="relative w-full overflow-hidden rounded-md border border-slate-300 w-pink" style="height:clamp(300px,52vw,440px)">
+          <div id="floor" class="absolute left-0 right-0 bottom-0 f-wood" style="height:32%"></div>
+          <div class="absolute left-0 right-0 bg-black/10" style="bottom:32%;height:10px"></div>
+          <div id="layer" class="absolute inset-0 overflow-hidden"></div>
+          <div id="hint" class="absolute inset-0 flex items-center justify-center pointer-events-none" data-html2canvas-ignore>
+            <p class="text-sm font-medium bg-white/90 text-slate-500 px-3 py-1.5 rounded-md border border-slate-200">👆 Tap a sticker to add it here!</p></div>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <div class="font-bold text-slate-800">✏️ Fill in the blanks to describe your room</div>
+        <div class="border-t border-slate-200 pt-4 space-y-3 text-base sm:text-lg">
+          <p class="fh text-lg font-bold text-slate-700">Welcome!</p>
+          <p class="flex flex-wrap items-baseline gap-2">This is my <input class="blank sentence-blank" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="blank 1">.</p>
+          <p class="flex flex-wrap items-baseline gap-2">There <input class="blank sentence-blank" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="blank 2">.</p>
+          <p class="flex flex-wrap items-baseline gap-2">There <input class="blank sentence-blank" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="blank 3">.</p>
+          <p class="flex flex-wrap items-baseline gap-2">There <input class="blank sentence-blank" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="blank 4">.</p>
+          <p class="flex flex-wrap items-baseline gap-2">There <input class="blank sentence-blank" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="blank 5">, too.</p>
+          <p class="font-medium text-slate-700">I like my <span id="likeRoom">bedroom</span>.</p>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <button id="submit" class="primary-action py-3 px-5 font-bold text-base rounded-md disabled:opacity-50 disabled:cursor-not-allowed">Submit My Room</button>
+      <button id="share" class="secondary-action py-3 px-5 font-bold text-base rounded-md">Preview</button>
+    </div>
+    <div class="text-xs text-slate-500 text-center px-2">방 그림과 학생 정보만 제출돼요. 영어 문장은 연습용이며 저장되지 않아요.</div>
+  </section>
+</main>
+
+<div id="noticeModal" class="hidden fixed inset-0 z-[60] bg-slate-900/60 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="noticeTitle">
+  <div class="relative bg-white rounded-xl p-6 max-w-sm w-full text-center shadow-xl border border-slate-200">
+    <button id="noticeClose" type="button" aria-label="닫기" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 text-xl font-bold leading-none">×</button>
+    <div id="noticeIcon" class="text-4xl mb-2">⚠️</div>
+    <h3 id="noticeTitle" class="fh text-xl font-bold text-slate-800 mb-2" >확인해 주세요</h3>
+    <div id="noticeMessage" class="text-sm font-semibold text-slate-600 leading-relaxed"></div>
+    <button id="noticeOk" type="button" class="primary-action mt-5 px-6 py-2.5 font-bold rounded-xl">확인</button>
+  </div>
+</div>
+
+
+<div id="confirmModal" class="hidden fixed inset-0 z-[70] bg-slate-900/60 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+  <div class="relative bg-white rounded-xl p-6 max-w-sm w-full text-center shadow-xl border border-slate-200">
+    <button id="confirmClose" type="button" aria-label="닫기" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 text-xl font-bold leading-none">×</button>
+    <div id="confirmIcon" class="text-4xl mb-2">⚠️</div>
+    <h3 id="confirmTitle" class="text-xl font-bold text-slate-800 mb-2">확인해 주세요</h3>
+    <div id="confirmMessage" class="text-sm font-semibold text-slate-600 leading-relaxed"></div>
+    <div class="grid grid-cols-2 gap-2 mt-5">
+      <button id="confirmCancel" type="button" class="secondary-action px-5 py-2.5 font-bold rounded-md">취소</button>
+      <button id="confirmOk" type="button" class="primary-action px-5 py-2.5 font-bold rounded-md">확인</button>
+    </div>
+  </div>
+</div>
+
+<div id="modal" class="hidden fixed inset-0 z-50 bg-slate-900/70 flex items-center justify-center p-4">
+  <div class="bg-white rounded-xl p-4 max-w-2xl w-full max-h-full overflow-auto text-center border border-slate-200">
+    <p class="text-sm font-semibold mb-2">🖼️ 실제 제출되는 이미지예요. 길게 누르거나 마우스 오른쪽 버튼을 눌러 JPG로 저장할 수 있어요.</p>
+    <img id="poster" alt="Room poster" class="w-full rounded-lg border" style="-webkit-user-select:auto;user-select:auto">
+    <button id="close" class="primary-action mt-3 px-5 py-2 font-bold rounded-xl">닫기</button>
+  </div>
+</div>
+<div id="toast" class="fixed right-4 z-50 bg-slate-800 text-white text-xs font-semibold px-4 py-2.5 rounded-xl opacity-0 transition-opacity pointer-events-none" style="bottom:calc(16px + env(safe-area-inset-bottom,0px))"></div>
+
+<script>
+const S=(v,b)=>`<svg viewBox="${v}" width="100%" height="100%">${b}</svg>`;
+const CAT=[
+{id:'bed1',n:'Cozy Blue Bed',c:'beds',w:140,h:105,s:S('0 0 120 90','<rect x="10" y="45" width="100" height="35" rx="6" fill="#3B82F6"/><rect x="5" y="20" width="110" height="30" rx="8" fill="#60A5FA"/><rect x="15" y="25" width="35" height="20" rx="4" fill="#fff"/><rect x="55" y="25" width="35" height="20" rx="4" fill="#fff"/><rect x="10" y="65" width="100" height="20" rx="3" fill="#93C5FD"/>')},
+{id:'bed2',n:'Pink Bed',c:'beds',w:140,h:105,s:S('0 0 120 90','<rect x="10" y="45" width="100" height="35" rx="6" fill="#EC4899"/><rect x="5" y="20" width="110" height="30" rx="8" fill="#F472B6"/><rect x="15" y="25" width="40" height="20" rx="4" fill="#FFF1F2"/><rect x="65" y="25" width="40" height="20" rx="4" fill="#FFF1F2"/><rect x="10" y="75" width="12" height="12" fill="#831843"/><rect x="98" y="75" width="12" height="12" fill="#831843"/>')},
+{id:'sofa',n:'Soft Sofa',c:'seating',w:130,h:85,s:S('0 0 120 80','<path d="M10 30Q10 15 25 15H95Q110 15 110 30V60H10Z" fill="#EAB308"/><rect x="5" y="35" width="20" height="30" rx="5" fill="#CA8A04"/><rect x="95" y="35" width="20" height="30" rx="5" fill="#CA8A04"/><rect x="22" y="40" width="36" height="22" rx="4" fill="#FEF08A"/><rect x="62" y="40" width="36" height="22" rx="4" fill="#FEF08A"/>')},
+{id:'tv',n:'TV Stand',c:'seating',w:130,h:90,s:S('0 0 120 90','<rect x="15" y="10" width="90" height="50" rx="4" fill="#1E293B"/><rect x="20" y="15" width="80" height="40" rx="2" fill="#38BDF8"/><rect x="10" y="68" width="100" height="15" rx="3" fill="#B45309"/>')},
+{id:'chair',n:'Study Chair',c:'seating',w:70,h:80,s:S('0 0 80 90','<rect x="20" y="10" width="40" height="35" rx="6" fill="#6366F1"/><rect x="15" y="45" width="50" height="12" rx="4" fill="#4F46E5"/><rect x="36" y="57" width="8" height="18" fill="#334155"/><path d="M15 75H65" stroke="#334155" stroke-width="4" stroke-linecap="round"/>')},
+{id:'desk',n:'Study Desk',c:'desks',w:130,h:85,s:S('0 0 120 80','<rect x="10" y="15" width="100" height="16" rx="3" fill="#B45309"/><rect x="15" y="31" width="25" height="35" fill="#D97706"/><rect x="80" y="31" width="25" height="35" fill="#D97706"/><circle cx="27" cy="42" r="2" fill="#78350F"/><circle cx="27" cy="55" r="2" fill="#78350F"/>')},
+{id:'fridge',n:'Refrigerator',c:'kitchen',w:80,h:110,s:S('0 0 80 110','<rect x="10" y="10" width="60" height="90" rx="6" fill="#E2E8F0" stroke="#94A3B8" stroke-width="3"/><path d="M10 45H70" stroke="#94A3B8" stroke-width="3"/><rect x="16" y="20" width="4" height="18" rx="2" fill="#64748B"/><rect x="16" y="55" width="4" height="25" rx="2" fill="#64748B"/>')},
+{id:'stove',n:'Oven & Stove',c:'kitchen',w:95,h:95,s:S('0 0 90 90','<rect x="10" y="10" width="70" height="70" rx="4" fill="#F1F5F9" stroke="#94A3B8" stroke-width="3"/><rect x="15" y="15" width="60" height="15" fill="#334155"/><circle cx="25" cy="22" r="4" fill="#EF4444"/><circle cx="45" cy="22" r="4" fill="#F59E0B"/><circle cx="65" cy="22" r="4" fill="#10B981"/><rect x="20" y="38" width="50" height="35" rx="3" fill="#475569"/>')},
+{id:'dtable',n:'Dining Table',c:'kitchen',w:120,h:85,s:S('0 0 110 80','<rect x="10" y="25" width="90" height="12" rx="3" fill="#D97706"/><rect x="20" y="37" width="8" height="35" fill="#92400E"/><rect x="82" y="37" width="8" height="35" fill="#92400E"/><circle cx="40" cy="20" r="7" fill="#EF4444"/><circle cx="60" cy="20" r="7" fill="#F59E0B"/>')},
+{id:'tub',n:'Bathtub',c:'bathroom',w:130,h:85,s:S('0 0 120 80','<path d="M10 30Q10 15 25 15H95Q110 15 110 30L105 60Q105 70 95 70H25Q15 70 15 60Z" fill="#fff" stroke="#38BDF8" stroke-width="4"/><circle cx="25" cy="30" r="6" fill="#7DD3FC"/><circle cx="35" cy="25" r="8" fill="#BAE6FD"/><circle cx="48" cy="28" r="5" fill="#BAE6FD"/>')},
+{id:'sink',n:'Sink & Mirror',c:'bathroom',w:85,h:105,s:S('0 0 80 100','<ellipse cx="40" cy="25" rx="20" ry="20" fill="#E0F2FE" stroke="#38BDF8" stroke-width="3"/><rect x="15" y="55" width="50" height="35" rx="4" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="3"/><ellipse cx="40" cy="55" rx="18" ry="6" fill="#93C5FD"/>')},
+{id:'toilet',n:'Toilet',c:'bathroom',w:70,h:90,s:S('0 0 70 90','<rect x="15" y="10" width="40" height="35" rx="4" fill="#fff" stroke="#CBD5E1" stroke-width="3"/><ellipse cx="35" cy="55" rx="22" ry="20" fill="#fff" stroke="#CBD5E1" stroke-width="3"/><ellipse cx="35" cy="53" rx="14" ry="12" fill="#BAE6FD"/>')},
+{id:'bench',n:'Park Bench',c:'garden',w:115,h:75,s:S('0 0 110 70','<rect x="10" y="20" width="90" height="10" fill="#B45309"/><rect x="10" y="33" width="90" height="8" fill="#B45309"/><rect x="15" y="41" width="8" height="24" fill="#78350F"/><rect x="87" y="41" width="8" height="24" fill="#78350F"/>')},
+{id:'fountain',n:'Fountain',c:'garden',w:85,h:105,s:S('0 0 80 100','<ellipse cx="40" cy="40" rx="35" ry="12" fill="#38BDF8"/><ellipse cx="40" cy="70" rx="25" ry="8" fill="#94A3B8"/><rect x="35" y="40" width="10" height="30" fill="#64748B"/><path d="M40 38Q30 15 20 25M40 38Q50 15 60 25" stroke="#7DD3FC" stroke-width="3" fill="none"/>')},
+{id:'tree',n:'Garden Tree',c:'garden',w:100,h:120,s:S('0 0 90 110','<rect x="38" y="55" width="14" height="45" rx="3" fill="#78350F"/><circle cx="45" cy="40" r="32" fill="#22C55E"/><circle cx="30" cy="30" r="22" fill="#4ADE80"/><circle cx="60" cy="32" r="20" fill="#16A34A"/>')},
+{id:'plant',n:'Green Plant',c:'plants',w:70,h:90,s:S('0 0 80 100','<path d="M40 50Q20 20 10 30Q30 50 40 60Z" fill="#22C55E"/><path d="M40 45Q60 15 70 25Q50 45 40 60Z" fill="#16A34A"/><path d="M40 35Q35 5 40 0Q45 5 40 35Z" fill="#15803D"/><path d="M25 60H55L50 90H30Z" fill="#F97316"/>')},
+{id:'laptop',n:'Laptop',c:'electronics',w:60,h:45,s:S('0 0 70 50','<rect x="15" y="8" width="40" height="26" rx="3" fill="#334155"/><rect x="18" y="11" width="34" height="20" rx="1" fill="#38BDF8"/><path d="M5 36H65L60 42H10Z" fill="#94A3B8"/>')},
+{id:'lamp',n:'Standing Lamp',c:'electronics',w:60,h:120,s:S('0 0 60 120','<path d="M15 35H45L40 10H20Z" fill="#FACC15"/><path d="M30 35V105" stroke="#475569" stroke-width="4"/><ellipse cx="30" cy="107" rx="18" ry="5" fill="#334155"/>')},
+{id:'window',n:'Sunny Window',c:'decor',w:95,h:105,s:S('0 0 90 100','<rect x="10" y="10" width="70" height="80" rx="4" fill="#BAE6FD" stroke="#fff" stroke-width="6"/><path d="M45 10V90M10 50H80" stroke="#fff" stroke-width="4"/><circle cx="65" cy="30" r="10" fill="#FDE047"/><path d="M5 10Q20 40 5 90H15Q30 45 15 10Z" fill="#F472B6"/><path d="M85 10Q70 40 85 90H75Q60 45 75 10Z" fill="#F472B6"/>')},
+{id:'clock',n:'Wall Clock',c:'decor',w:50,h:50,s:S('0 0 60 60','<circle cx="30" cy="30" r="25" fill="#fff" stroke="#F43F5E" stroke-width="5"/><path d="M30 30V15M30 30H40" stroke="#0F172A" stroke-width="3" stroke-linecap="round"/>')},
+{id:'wardrobe',n:'Wardrobe',c:'beds',w:90,h:125,s:S('0 0 80 110','<rect x="8" y="8" width="64" height="94" rx="4" fill="#A16207"/><path d="M40 8V102" stroke="#713F12" stroke-width="3"/><circle cx="35" cy="58" r="3" fill="#FDE68A"/><circle cx="45" cy="58" r="3" fill="#FDE68A"/><rect x="14" y="14" width="20" height="38" rx="2" fill="#CA8A04"/><rect x="46" y="14" width="20" height="38" rx="2" fill="#CA8A04"/>')},
+{id:'shelf',n:'Bookshelf',c:'decor',w:95,h:120,s:S('0 0 80 100','<rect x="8" y="5" width="64" height="90" rx="3" fill="#92400E"/><rect x="12" y="9" width="56" height="25" fill="#FEF3C7"/><rect x="12" y="38" width="56" height="25" fill="#FEF3C7"/><rect x="12" y="67" width="56" height="24" fill="#FEF3C7"/><rect x="16" y="14" width="6" height="20" fill="#EF4444"/><rect x="24" y="12" width="7" height="22" fill="#3B82F6"/><rect x="33" y="16" width="6" height="18" fill="#22C55E"/><rect x="18" y="45" width="8" height="18" fill="#A855F7"/><rect x="28" y="43" width="6" height="20" fill="#F59E0B"/><rect x="50" y="72" width="8" height="19" fill="#EC4899"/>')},
+{id:'nightstand',n:'Nightstand',c:'beds',w:60,h:65,s:S('0 0 60 65','<rect x="8" y="12" width="44" height="42" rx="4" fill="#D97706"/><rect x="12" y="17" width="36" height="16" fill="#F59E0B"/><rect x="12" y="36" width="36" height="14" fill="#F59E0B"/><circle cx="30" cy="25" r="2" fill="#78350F"/><circle cx="30" cy="43" r="2" fill="#78350F"/><rect x="12" y="54" width="5" height="8" fill="#78350F"/><rect x="43" y="54" width="5" height="8" fill="#78350F"/>')},
+{id:'rug',n:'Round Rug',c:'decor',w:120,h:60,s:S('0 0 120 60','<ellipse cx="60" cy="30" rx="56" ry="26" fill="#A78BFA"/><ellipse cx="60" cy="30" rx="42" ry="19" fill="#C4B5FD"/><ellipse cx="60" cy="30" rx="26" ry="11" fill="#EDE9FE"/>')},
+{id:'picture',n:'Picture Frame',c:'decor',w:65,h:55,s:S('0 0 70 60','<rect x="5" y="5" width="60" height="50" rx="3" fill="#92400E"/><rect x="11" y="11" width="48" height="38" fill="#BAE6FD"/><circle cx="46" cy="22" r="6" fill="#FDE047"/><path d="M11 49L28 30L40 42L48 35L59 49Z" fill="#22C55E"/>')},
+{id:'books',n:'Books',c:'decor',w:55,h:40,s:S('0 0 60 45','<rect x="6" y="28" width="48" height="12" rx="2" fill="#3B82F6"/><rect x="10" y="17" width="42" height="11" rx="2" fill="#EF4444"/><rect x="8" y="6" width="40" height="11" rx="2" fill="#22C55E"/>')},
+{id:'ball',n:'Ball',c:'decor',w:40,h:40,s:S('0 0 40 40','<circle cx="20" cy="20" r="17" fill="#F97316"/><path d="M3 20H37M20 3V37M8 8Q20 20 8 32M32 8Q20 20 32 32" stroke="#7C2D12" stroke-width="1.5" fill="none"/>')},
+{id:'pillow',n:'Pillow',c:'decor',w:55,h:45,s:S('0 0 60 50','<rect x="6" y="6" width="48" height="38" rx="12" fill="#F472B6"/><circle cx="30" cy="25" r="5" fill="#FBCFE8"/>')},
+{id:'armchair',n:'Armchair',c:'seating',w:90,h:85,s:S('0 0 90 85','<rect x="12" y="10" width="66" height="40" rx="14" fill="#F97316"/><rect x="5" y="35" width="18" height="38" rx="8" fill="#EA580C"/><rect x="67" y="35" width="18" height="38" rx="8" fill="#EA580C"/><rect x="20" y="42" width="50" height="26" rx="6" fill="#FDBA74"/>')},
+{id:'coffee',n:'Coffee Table',c:'desks',w:100,h:60,s:S('0 0 100 60','<ellipse cx="50" cy="22" rx="42" ry="14" fill="#B45309"/><rect x="18" y="28" width="6" height="24" fill="#78350F"/><rect x="76" y="28" width="6" height="24" fill="#78350F"/><rect x="38" y="12" width="14" height="10" rx="2" fill="#fff"/><circle cx="64" cy="18" r="4" fill="#EF4444"/>')},
+{id:'fireplace',n:'Fireplace',c:'decor',w:110,h:100,s:S('0 0 100 90','<rect x="8" y="10" width="84" height="76" rx="4" fill="#B91C1C"/><rect x="4" y="6" width="92" height="10" rx="3" fill="#7F1D1D"/><rect x="25" y="34" width="50" height="52" rx="3" fill="#1C1917"/><path d="M50 82Q35 70 45 55Q47 65 54 58Q60 70 50 82Z" fill="#F97316"/><path d="M50 82Q44 76 50 68Q56 76 50 82Z" fill="#FDE047"/>')},
+{id:'ksink',n:'Kitchen Sink',c:'kitchen',w:120,h:85,s:S('0 0 120 85','<rect x="6" y="30" width="108" height="50" rx="4" fill="#CBD5E1"/><rect x="12" y="22" width="96" height="10" rx="3" fill="#94A3B8"/><rect x="30" y="24" width="40" height="6" rx="2" fill="#38BDF8"/><path d="M80 22V8Q80 4 86 4H92" stroke="#64748B" stroke-width="4" fill="none"/><path d="M60 30V80M10 55H114" stroke="#94A3B8" stroke-width="2"/>')},
+{id:'cabinet',n:'Wall Cabinet',c:'kitchen',w:110,h:60,s:S('0 0 110 60','<rect x="5" y="5" width="100" height="50" rx="4" fill="#FCD34D"/><path d="M55 5V55" stroke="#B45309" stroke-width="2"/><circle cx="48" cy="30" r="3" fill="#78350F"/><circle cx="62" cy="30" r="3" fill="#78350F"/>')},
+{id:'micro',n:'Microwave',c:'kitchen',w:75,h:55,s:S('0 0 80 60','<rect x="5" y="8" width="70" height="44" rx="5" fill="#E2E8F0" stroke="#94A3B8" stroke-width="3"/><rect x="11" y="14" width="40" height="32" rx="3" fill="#1E293B"/><circle cx="62" cy="22" r="4" fill="#F43F5E"/><circle cx="62" cy="36" r="4" fill="#64748B"/>')},
+{id:'fruit',n:'Fruit Bowl',c:'kitchen',w:70,h:55,s:S('0 0 70 55','<circle cx="24" cy="20" r="10" fill="#EF4444"/><circle cx="42" cy="18" r="10" fill="#F59E0B"/><circle cx="34" cy="12" r="8" fill="#84CC16"/><path d="M5 26H65Q62 48 35 48Q8 48 5 26Z" fill="#6366F1"/>')},
+{id:'pot',n:'Cooking Pot',c:'kitchen',w:65,h:50,s:S('0 0 70 50','<rect x="12" y="14" width="46" height="28" rx="5" fill="#64748B"/><rect x="8" y="10" width="54" height="7" rx="3" fill="#94A3B8"/><rect x="2" y="22" width="10" height="5" rx="2" fill="#475569"/><rect x="58" y="22" width="10" height="5" rx="2" fill="#475569"/>')},
+{id:'shower',n:'Shower',c:'bathroom',w:80,h:125,s:S('0 0 80 110','<path d="M20 100V15Q20 8 28 8H55" stroke="#64748B" stroke-width="5" fill="none"/><path d="M45 8H65L60 22H50Z" fill="#94A3B8"/><path d="M50 28V40M56 28V44M62 28V40M53 48V58M59 48V60" stroke="#7DD3FC" stroke-width="3" stroke-linecap="round"/><rect x="10" y="98" width="60" height="8" rx="3" fill="#CBD5E1"/>')},
+{id:'washer',n:'Washing Machine',c:'bathroom',w:85,h:95,s:S('0 0 80 90','<rect x="8" y="6" width="64" height="78" rx="6" fill="#F1F5F9" stroke="#94A3B8" stroke-width="3"/><circle cx="40" cy="52" r="22" fill="#CBD5E1" stroke="#64748B" stroke-width="3"/><circle cx="40" cy="52" r="15" fill="#7DD3FC"/><circle cx="20" cy="18" r="3" fill="#F43F5E"/><rect x="30" y="14" width="30" height="7" rx="2" fill="#CBD5E1"/>')},
+{id:'towel',n:'Towels',c:'bathroom',w:75,h:70,s:S('0 0 70 70','<path d="M6 12H64" stroke="#64748B" stroke-width="4" stroke-linecap="round"/><rect x="12" y="12" width="20" height="46" rx="3" fill="#F472B6"/><rect x="38" y="12" width="20" height="38" rx="3" fill="#38BDF8"/><path d="M12 24H32M38 24H58" stroke="#fff" stroke-width="3"/>')},
+{id:'duck',n:'Rubber Duck',c:'bathroom',w:50,h:50,s:S('0 0 50 50','<ellipse cx="22" cy="32" rx="18" ry="12" fill="#FACC15"/><circle cx="32" cy="16" r="10" fill="#FACC15"/><path d="M40 16L48 19L40 22Z" fill="#F97316"/><circle cx="34" cy="13" r="2" fill="#1E293B"/><path d="M12 30Q20 36 28 28" stroke="#EAB308" stroke-width="3" fill="none"/>')},
+{id:'flowers',n:'Flowers',c:'garden',w:90,h:70,s:S('0 0 90 70','<path d="M20 30V62M45 22V62M70 32V62" stroke="#16A34A" stroke-width="3"/><circle cx="20" cy="26" r="9" fill="#F472B6"/><circle cx="20" cy="26" r="3" fill="#FDE047"/><circle cx="45" cy="18" r="10" fill="#F87171"/><circle cx="45" cy="18" r="3.5" fill="#FDE047"/><circle cx="70" cy="28" r="9" fill="#A78BFA"/><circle cx="70" cy="28" r="3" fill="#FDE047"/><rect x="5" y="58" width="80" height="8" rx="3" fill="#78350F"/>')},
+{id:'swing',n:'Swing',c:'garden',w:100,h:110,s:S('0 0 100 110','<path d="M10 100L30 10H70L90 100" stroke="#78350F" stroke-width="6" fill="none" stroke-linejoin="round"/><path d="M40 10V78M60 10V78" stroke="#64748B" stroke-width="2"/><rect x="34" y="78" width="32" height="6" rx="2" fill="#EF4444"/>')},
+{id:'fence',n:'Fence',c:'garden',w:140,h:60,s:S('0 0 140 60','<g fill="#FDE68A" stroke="#B45309" stroke-width="2"><path d="M8 10L16 2L24 10V56H8Z"/><path d="M36 10L44 2L52 10V56H36Z"/><path d="M64 10L72 2L80 10V56H64Z"/><path d="M92 10L100 2L108 10V56H92Z"/><path d="M120 10L128 2L136 10V56H120Z"/></g><rect x="4" y="20" width="132" height="6" fill="#D97706"/><rect x="4" y="40" width="132" height="6" fill="#D97706"/>')},
+{id:'sun',n:'Sun',c:'garden',w:70,h:70,s:S('0 0 70 70','<circle cx="35" cy="35" r="16" fill="#FDE047"/><path d="M35 4V12M35 58V66M4 35H12M58 35H66M13 13L19 19M51 51L57 57M57 13L51 19M19 51L13 57" stroke="#FACC15" stroke-width="4" stroke-linecap="round"/>')},
+{id:'cloud',n:'Cloud',c:'garden',w:90,h:50,s:S('0 0 90 50','<ellipse cx="45" cy="32" rx="36" ry="13" fill="#fff"/><circle cx="30" cy="24" r="14" fill="#fff"/><circle cx="52" cy="19" r="17" fill="#fff"/>')},
+{id:'doghouse',n:'Dog House',c:'garden',w:100,h:90,s:S('0 0 100 90','<rect x="14" y="38" width="72" height="46" fill="#F59E0B"/><path d="M6 42L50 8L94 42Z" fill="#DC2626"/><path d="M38 84V58Q38 48 50 48Q62 48 62 58V84Z" fill="#451A03"/>')},
+{id:'mailbox',n:'Mailbox',c:'garden',w:50,h:80,s:S('0 0 50 80','<rect x="22" y="36" width="6" height="42" fill="#78350F"/><rect x="6" y="10" width="38" height="28" rx="12" fill="#3B82F6"/><rect x="38" y="14" width="4" height="14" fill="#EF4444"/><rect x="14" y="22" width="14" height="3" rx="1" fill="#1E3A8A"/>')},
+{id:'dresser',n:'Dresser',c:'beds',w:105,h:85,s:S('0 0 110 90','<rect x="12" y="15" width="86" height="62" rx="4" fill="#D97706"/><rect x="18" y="22" width="74" height="15" rx="2" fill="#F59E0B"/><rect x="18" y="42" width="74" height="13" rx="2" fill="#F59E0B"/><rect x="18" y="60" width="74" height="11" rx="2" fill="#F59E0B"/><circle cx="55" cy="29" r="2" fill="#78350F"/><circle cx="55" cy="48" r="2" fill="#78350F"/><circle cx="55" cy="65" r="2" fill="#78350F"/><rect x="20" y="77" width="8" height="9" fill="#78350F"/><rect x="82" y="77" width="8" height="9" fill="#78350F"/>')},
+{id:'mirror',n:'Mirror',c:'decor',w:65,h:95,s:S('0 0 70 100','<rect x="8" y="6" width="54" height="82" rx="25" fill="#C08457"/><rect x="13" y="11" width="44" height="72" rx="21" fill="#DBF4FF"/><path d="M18 24Q34 13 52 18" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".8"/>')},
+{id:'sidetable',n:'Side Table',c:'desks',w:75,h:65,s:S('0 0 80 70','<rect x="8" y="12" width="64" height="12" rx="4" fill="#B45309"/><rect x="16" y="24" width="8" height="38" fill="#92400E"/><rect x="56" y="24" width="8" height="38" fill="#92400E"/><circle cx="40" cy="7" r="6" fill="#FACC15"/>')},
+{id:'speaker',n:'Speaker',c:'electronics',w:55,h:85,s:S('0 0 60 90','<rect x="10" y="7" width="40" height="74" rx="6" fill="#334155"/><circle cx="30" cy="31" r="12" fill="#64748B"/><circle cx="30" cy="31" r="5" fill="#94A3B8"/><circle cx="30" cy="61" r="8" fill="#64748B"/><circle cx="30" cy="61" r="3" fill="#94A3B8"/>')},
+{id:'island',n:'Kitchen Island',c:'kitchen',w:130,h:85,s:S('0 0 130 90','<rect x="8" y="16" width="114" height="12" rx="3" fill="#D6B07B"/><rect x="14" y="28" width="102" height="48" rx="4" fill="#E2E8F0"/><path d="M48 28V76M82 28V76" stroke="#CBD5E1" stroke-width="2"/><circle cx="31" cy="52" r="3" fill="#64748B"/><circle cx="65" cy="52" r="3" fill="#64748B"/><circle cx="99" cy="52" r="3" fill="#64748B"/>')},
+{id:'laundry',n:'Laundry Basket',c:'bathroom',w:70,h:75,s:S('0 0 75 80','<path d="M12 20H63L58 70H17Z" fill="#93C5FD" stroke="#60A5FA" stroke-width="3"/><path d="M20 28H55M19 38H56M18 48H57M17 58H58" stroke="#DBEAFE" stroke-width="3"/><path d="M24 20Q37 7 51 20" stroke="#64748B" stroke-width="4" fill="none"/>')},
+{id:'bathmat',n:'Bath Mat',c:'bathroom',w:95,h:50,s:S('0 0 100 55','<rect x="8" y="10" width="84" height="35" rx="12" fill="#67E8F9"/><path d="M18 21H82M18 29H82M18 37H82" stroke="#CFFAFE" stroke-width="3" stroke-linecap="round"/>')},
+{id:'deckchair',n:'Deck Chair',c:'garden',w:95,h:95,s:S('0 0 100 100','<path d="M24 15L68 70M72 15L32 70" stroke="#92400E" stroke-width="6" stroke-linecap="round"/><path d="M28 22L69 22L58 57L38 57Z" fill="#38BDF8"/><path d="M20 72H80" stroke="#78350F" stroke-width="6" stroke-linecap="round"/>')},
+{id:'bear',n:'Teddy Bear',c:'decor',w:55,h:65,s:S('0 0 60 70','<circle cx="18" cy="18" r="8" fill="#B45309"/><circle cx="42" cy="18" r="8" fill="#B45309"/><circle cx="30" cy="32" r="18" fill="#D97706"/><ellipse cx="30" cy="36" rx="8" ry="6" fill="#FEF3C7"/><circle cx="30" cy="34" r="3" fill="#451A03"/><circle cx="23" cy="28" r="2" fill="#451A03"/><circle cx="37" cy="28" r="2" fill="#451A03"/><ellipse cx="30" cy="52" rx="16" ry="14" fill="#D97706"/>')}
+];
+const ROOMS={bedroom:['🛏️','Bedroom','My Dream Bedroom','w-pink','f-wood','beds'],livingroom:['🛋️','Living','My Dream Living Room','w-yellow','f-wood','seating'],kitchen:['🍳','Kitchen','My Dream Kitchen','w-tile','f-tile','kitchen'],bathroom:['🛁','Bath','My Dream Bathroom','w-bath','f-tile','bathroom'],garden:['🌿','Garden','My Dream Garden','w-sky','f-grass','garden']};
+const CATS=[['room','⭐ This room'],['all','All'],['beds','🛏️ Beds'],['seating','🪑 Seating'],['desks','Tables'],['kitchen','🍳 Kitchen'],['bathroom','🛁 Bath'],['garden','🌻 Garden'],['plants','🌿 Plants'],['electronics','💻 Tech'],['decor','🖼️ Decor']];
+const WALLS=[['w-pink','#fbcfe8'],['w-blue','#bae6fd'],['w-green','#bbf7d0'],['w-yellow','#fef9c3'],['w-tile','#f1f5f9'],['w-sky','#7dd3fc']];
+const FLOORS=[['f-wood','Wood'],['f-tile','Tile'],['f-carpet','Carpet'],['f-grass','Grass']];
+
+const HUES=[
+  ['original','#ffffff'],
+  ['red','#f43f5e'],
+  ['yellow','#fbbf24'],
+  ['green','#22c55e'],
+  ['blue','#38bdf8'],
+  ['purple','#a855f7'],
+  ['pink','#f472b6'],
+  ['dark','#1e293b']
+];
+
+const PAINTS={
+  red:{h:350,s:82},
+  yellow:{h:43,s:92},
+  green:{h:145,s:68},
+  blue:{h:202,s:88},
+  purple:{h:275,s:72},
+  pink:{h:330,s:82},
+  dark:{h:215,s:16,dark:true}
+};
+
+// Only the intended "paintable" parts of each sticker are recolored.
+// This keeps semantic colors such as the blue sky in Sunny Window intact.
+const PAINT_TARGETS={
+  bed1:['#3B82F6','#60A5FA','#93C5FD'],
+  bed2:['#EC4899','#F472B6','#831843'],
+  sofa:['#EAB308','#CA8A04','#FEF08A'],
+  tv:['#B45309'],
+  chair:['#6366F1','#4F46E5'],
+  desk:['#B45309','#D97706','#78350F'],
+  fridge:['#E2E8F0','#94A3B8','#64748B'],
+  stove:['#F1F5F9','#94A3B8','#334155','#475569'],
+  dtable:['#D97706','#92400E'],
+  tub:['#fff'],
+  sink:['#F8FAFC','#CBD5E1'],
+  toilet:['#fff','#CBD5E1'],
+  bench:['#B45309','#78350F'],
+  fountain:['#94A3B8','#64748B'],
+  tree:['#22C55E','#4ADE80','#16A34A'],
+  plant:['#22C55E','#16A34A','#15803D'],
+  laptop:['#334155','#94A3B8'],
+  lamp:['#FACC15'],
+  window:['#F472B6'],
+  clock:['#F43F5E'],
+  wardrobe:['#A16207','#713F12','#CA8A04'],
+  shelf:['#92400E'],
+  nightstand:['#D97706','#F59E0B','#78350F'],
+  rug:['#A78BFA','#C4B5FD','#EDE9FE'],
+  picture:['#92400E'],
+  books:['#3B82F6','#EF4444','#22C55E'],
+  ball:['#F97316'],
+  pillow:['#F472B6','#FBCFE8'],
+  armchair:['#F97316','#EA580C','#FDBA74'],
+  coffee:['#B45309','#78350F'],
+  fireplace:['#B91C1C','#7F1D1D'],
+  ksink:['#CBD5E1','#94A3B8','#64748B'],
+  cabinet:['#FCD34D','#B45309','#78350F'],
+  micro:['#E2E8F0','#94A3B8'],
+  fruit:['#6366F1'],
+  pot:['#64748B','#94A3B8','#475569'],
+  shower:['#64748B','#94A3B8','#CBD5E1'],
+  washer:['#F1F5F9','#94A3B8','#CBD5E1'],
+  towel:['#F472B6','#38BDF8'],
+  duck:['#FACC15','#EAB308'],
+  flowers:['#F472B6','#F87171','#A78BFA'],
+  swing:['#EF4444'],
+  fence:['#FDE68A','#B45309','#D97706'],
+  sun:['#FDE047','#FACC15'],
+  cloud:['#fff'],
+  doghouse:['#F59E0B','#DC2626'],
+  mailbox:['#3B82F6','#1E3A8A'],
+  dresser:['#D97706','#F59E0B','#78350F'],
+  mirror:['#C08457'],
+  sidetable:['#B45309','#92400E'],
+  speaker:['#334155','#64748B','#94A3B8'],
+  island:['#D6B07B','#E2E8F0','#CBD5E1'],
+  laundry:['#93C5FD','#60A5FA','#DBEAFE'],
+  bathmat:['#67E8F9','#CFFAFE'],
+  deckchair:['#38BDF8','#92400E','#78350F'],
+  bear:['#B45309','#D97706']
+};
+
+function hexToRgb(hex){
+  let h=hex.replace('#','');
+  if(h.length===3)h=h.split('').map(x=>x+x).join('');
+  const n=parseInt(h,16);
+  return {r:(n>>16)&255,g:(n>>8)&255,b:n&255};
+}
+function rgbToHsl(r,g,b){
+  r/=255;g/=255;b/=255;
+  const max=Math.max(r,g,b),min=Math.min(r,g,b);
+  let h=0,s=0,l=(max+min)/2;
+  if(max!==min){
+    const d=max-min;
+    s=l>.5?d/(2-max-min):d/(max+min);
+    switch(max){
+      case r:h=(g-b)/d+(g<b?6:0);break;
+      case g:h=(b-r)/d+2;break;
+      default:h=(r-g)/d+4;
+    }
+    h*=60;
+  }
+  return {h,s:s*100,l:l*100};
+}
+function hslToHex(h,s,l){
+  s/=100;l/=100;
+  const c=(1-Math.abs(2*l-1))*s;
+  const x=c*(1-Math.abs((h/60)%2-1));
+  const m=l-c/2;
+  let r=0,g=0,b=0;
+  if(h<60){r=c;g=x}
+  else if(h<120){r=x;g=c}
+  else if(h<180){g=c;b=x}
+  else if(h<240){g=x;b=c}
+  else if(h<300){r=x;b=c}
+  else{r=c;b=x}
+  const toHex=v=>Math.round((v+m)*255).toString(16).padStart(2,'0');
+  return '#'+toHex(r)+toHex(g)+toHex(b);
+}
+function recolorSvg(svg,catId,paintKey){
+  if(!paintKey||paintKey==='original')return svg;
+  const paint=PAINTS[paintKey];
+  const targets=PAINT_TARGETS[catId]||[];
+  if(!paint||!targets.length)return svg;
+
+  let out=svg;
+  targets.forEach(src=>{
+    const rgb=hexToRgb(src);
+    const base=rgbToHsl(rgb.r,rgb.g,rgb.b);
+    let light=base.l;
+
+    // White/light surfaces need a little tint to make the chosen color visible.
+    if(light>94)light=84;
+    if(light<15)light=22;
+
+    let next;
+    if(paint.dark){
+      next=hslToHex(paint.h,paint.s,Math.max(16,Math.min(48,light*.62)));
+    }else{
+      next=hslToHex(paint.h,paint.s,light);
+    }
+
+    out=out.replace(new RegExp(src.replace('#','\\#'),'gi'),next);
+  });
+  return out;
+}
+const NAMES={bedroom:'bedroom',livingroom:'living room',kitchen:'kitchen',bathroom:'bathroom',garden:'garden'};
+const ROOM_LABELS={bedroom:'Bedroom',livingroom:'Living Room',kitchen:'Kitchen',bathroom:'Bathroom',garden:'Garden'};
+const SUBMIT_URL='https://script.google.com/macros/s/AKfycbzK6R15zpyeVNWZP02bGCDvLy0JpgLhl9GBuxR95WKnzn9gvJKbsQqdclqP2X2jI0X1Zw/exec';
+const SETS={
+bedroom:['bed1','bed2','wardrobe','dresser','nightstand','sidetable','desk','chair','mirror','shelf','rug','picture','books','ball','pillow','bear','lamp','laptop','speaker','window','clock','plant'],
+livingroom:['sofa','armchair','coffee','sidetable','tv','speaker','shelf','rug','fireplace','picture','lamp','plant','window','clock','pillow','books','bear'],
+kitchen:['fridge','stove','ksink','cabinet','micro','island','dtable','chair','fruit','pot','window','clock','plant','picture'],
+bathroom:['tub','sink','toilet','shower','washer','laundry','bathmat','towel','duck','mirror','window','plant','clock','picture','rug'],
+garden:['bench','deckchair','fountain','tree','flowers','swing','fence','doghouse','mailbox','sun','cloud','plant','ball']};
+const st={items:[],sel:null,z:10,cat:'room',room:'bedroom',wall:'w-pink',floor:'f-wood'};
+const history=[];
+const HISTORY_LIMIT=30;
+let submittedOnce=false;
+const $=id=>document.getElementById(id);
+const room=$('room'),layer=$('layer'),floor=$('floor');
+
+function toast(m){const t=$('toast');t.textContent=m;t.style.opacity=1;clearTimeout(t._t);t._t=setTimeout(()=>t.style.opacity=0,1800)}
+
+function deepCopy(v){return JSON.parse(JSON.stringify(v));}
+function snapshot(){
+  return {
+    items:deepCopy(st.items),
+    sel:st.sel,
+    z:st.z,
+    cat:st.cat,
+    room:st.room,
+    wall:st.wall,
+    floor:st.floor,
+    sentences:[...document.querySelectorAll('.sentence-blank')].map(x=>x.value)
+  };
+}
+function updateUndoButton(){
+  const b=$('undo');
+  if(b)b.disabled=history.length===0;
+}
+function pushHistory(snap){
+  history.push(snap||snapshot());
+  if(history.length>HISTORY_LIMIT)history.shift();
+  updateUndoButton();
+}
+function syncRoomUI(){
+  const r=ROOMS[st.room];
+  document.querySelectorAll('#rooms .rt').forEach(x=>x.classList.toggle('on',x.dataset.k===st.room));
+  $('title').textContent='🏡 '+r[2];
+  $('likeRoom').textContent=NAMES[st.room];
+  setWall(st.wall);
+  setFloor(st.floor);
+  grid();
+  drawAll();
+  select(st.sel);
+}
+function restoreSnapshot(s){
+  st.items=deepCopy(s.items);
+  st.sel=s.sel;
+  st.z=s.z;
+  st.cat=s.cat;
+  st.room=s.room;
+  st.wall=s.wall;
+  st.floor=s.floor;
+  const blanks=[...document.querySelectorAll('.sentence-blank')];
+  blanks.forEach((x,i)=>x.value=(s.sentences&&s.sentences[i])||'');
+  syncRoomUI();
+}
+function markEdited(){
+  if(submittedOnce){
+    $('submit').textContent='Edit & Resubmit';
+    $('submit').disabled=false;
+  }
+}
+
+
+function setWall(w){st.wall=w;room.className=room.className.replace(/\bw-\S+/g,'')+' '+w;}
+function setFloor(f){st.floor=f;floor.className=floor.className.replace(/\bf-\S+/g,'')+' '+f;
+  document.querySelectorAll('#floors button').forEach(b=>b.classList.toggle('on',b.dataset.v===f));}
+
+function buildPickers(){
+  $('rooms').innerHTML=Object.entries(ROOMS).map(([k,r])=>`<button class="rt ${k==='bedroom'?'on':''}" data-k="${k}"><span class="block text-base">${r[0]}</span>${r[1]}</button>`).join('');
+  $('walls').innerHTML=WALLS.map(([c,col])=>`<button data-v="${c}" class="h-7 rounded-md border border-slate-200" style="background:${col}" aria-label="wall ${c}"></button>`).join('');
+  $('floors').innerHTML=FLOORS.map(([c,n])=>`<button data-v="${c}" class="tab ${c==='f-wood'?'on':''}">${n}</button>`).join('');
+  $('tabs').innerHTML=CATS.map(([c,n])=>`<button class="tab ${c==='room'?'on':''}" data-c="${c}">${n}</button>`).join('');
+  $('hues').innerHTML=HUES.map(([h,c])=>`<button data-h="${h}" title="${h==='original'?'Original color':h}" class="w-4 h-4 rounded-full border border-white/80" style="background:${c};${h==='original'?'box-shadow:inset 0 0 0 1px #94a3b8':''}"></button>`).join('');
+}
+function grid(){
+  const list=CAT.filter(i=>st.cat==='all'||(st.cat==='room'?SETS[st.room].includes(i.id):i.c===st.cat));
+  $('grid').innerHTML=list.map(i=>`<button data-id="${i.id}" class="p-2 flex flex-col items-center"><div class="w-14 h-14 pointer-events-none">${i.s}</div><span class="text-[11px] font-semibold text-slate-700 mt-1 text-center">${i.n}</span></button>`).join('');
+  document.querySelectorAll('#tabs .tab').forEach(t=>t.classList.toggle('on',t.dataset.c===st.cat));
+}
+
+function inner(it){
+  const painted=recolorSvg(it.s,it.catId,it.hue);
+  return `<div class="w-full h-full" style="transform:rotate(${it.rot}deg) scaleX(${it.flip?-1:1})">${painted}</div><div class="rh"></div>`;
+}
+function place(it,el){el.style.cssText=`left:${it.x}px;top:${it.y}px;width:${it.w}px;height:${it.h}px;z-index:${it.z}`;}
+function drawAll(){
+  layer.innerHTML='';
+  st.items.forEach(it=>{
+    const el=document.createElement('div');el.className='item'+(it.id===st.sel?' sel':'');el.dataset.i=it.id;
+    el.innerHTML=inner(it);place(it,el);layer.appendChild(el);
+  });
+  $('hint').style.display=st.items.length?'none':'flex';
+}
+function select(id){
+  st.sel=id;
+  layer.querySelectorAll('.item').forEach(e=>e.classList.toggle('sel',e.dataset.i===id));
+  const it=st.items.find(i=>i.id===id);
+  $('tb').classList.toggle('hidden',!it);
+  if(it){
+    $('tname').textContent=it.n;
+    $('hues').style.display='flex';
+  }
+}
+const cur=()=>st.items.find(i=>i.id===st.sel);
+const elOf=it=>layer.querySelector(`[data-i="${it.id}"]`);
+function refresh(it){const el=elOf(it);if(el){el.innerHTML=inner(it);place(it,el);}}
+
+function add(c){
+  pushHistory();markEdited();
+  const r=room.getBoundingClientRect();
+  const it={id:'i'+Date.now(),catId:c.id,n:c.n,s:c.s,w:c.w,h:c.h,rot:0,flip:false,hue:'original',z:++st.z,
+    x:Math.max(10,r.width/2-c.w/2+(Math.random()*40-20)),y:Math.max(10,r.height/2-c.h/2+(Math.random()*40-20))};
+  st.items.push(it);drawAll();select(it.id);
+}
+
+// drag + resize
+layer.addEventListener('pointerdown',e=>{
+  const el=e.target.closest('.item');
+  if(!el){select(null);return;}
+  const it=st.items.find(i=>i.id===el.dataset.i);
+  select(it.id);
+  const rs=!!e.target.closest('.rh'),sx=e.clientX,sy=e.clientY,ox=it.x,oy=it.y,ow=it.w,ar=it.w/it.h;
+  const beforeMove=snapshot();
+  let historySaved=false;
+  el.setPointerCapture(e.pointerId);
+  const mv=ev=>{
+    const dx=ev.clientX-sx,dy=ev.clientY-sy;
+    if(!historySaved&&(Math.abs(dx)>1||Math.abs(dy)>1)){pushHistory(beforeMove);historySaved=true;markEdited();}
+    if(rs){it.w=Math.max(40,ow+dx);it.h=it.w/ar;}else{it.x=ox+dx;it.y=oy+dy;}
+    place(it,el);
+  };
+  const up=()=>{el.removeEventListener('pointermove',mv);el.removeEventListener('pointerup',up);el.removeEventListener('pointercancel',up);};
+  el.addEventListener('pointermove',mv);el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up);
+  e.preventDefault();
+});
+
+// toolbar
+$('tb').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;const it=cur();if(!it)return;
+  if(b.dataset.h){if(it.hue===b.dataset.h)return;pushHistory();markEdited();it.hue=b.dataset.h;refresh(it);return;}
+  const a=b.dataset.a;
+  if(a==='rot'){pushHistory();markEdited();it.rot=(it.rot+45)%360;refresh(it);}
+  else if(a==='flip'){pushHistory();markEdited();it.flip=!it.flip;refresh(it);}
+  else if(a==='up'){pushHistory();markEdited();it.z=++st.z;refresh(it);}
+  else if(a==='down'){pushHistory();markEdited();it.z=Math.max(1,it.z-1);refresh(it);}
+  else if(a==='del'){pushHistory();markEdited();st.items=st.items.filter(i=>i!==it);select(null);drawAll();}
+});
+
+// pickers
+function clearSentencePractice(){
+  document.querySelectorAll('.sentence-blank').forEach(x=>x.value='');
+}
+function applyRoomChange(nextRoom){
+  if(nextRoom===st.room)return;
+  pushHistory();markEdited();
+  const r=ROOMS[nextRoom];
+  st.items=[];
+  st.sel=null;
+  st.room=nextRoom;
+  st.cat='room';
+  st.wall=r[3];
+  st.floor=r[4];
+  clearSentencePractice();
+  syncRoomUI();
+}
+$('rooms').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  const nextRoom=b.dataset.k;
+  if(nextRoom===st.room)return;
+  if(st.items.length){
+    askConfirm({
+      title:'장소를 바꿀까요?',
+      message:'현재 꾸민 <strong>가구와 소품이 모두 사라져요.</strong>',
+      okText:'바꾸기',
+      onConfirm:()=>applyRoomChange(nextRoom)
+    });
+  }else{
+    applyRoomChange(nextRoom);
+  }
+});
+$('walls').addEventListener('click',e=>{
+  const b=e.target.closest('button');
+  if(b&&b.dataset.v!==st.wall){pushHistory();markEdited();setWall(b.dataset.v);}
+});
+$('floors').addEventListener('click',e=>{
+  const b=e.target.closest('button');
+  if(b&&b.dataset.v!==st.floor){pushHistory();markEdited();setFloor(b.dataset.v);}
+});
+$('tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(b){st.cat=b.dataset.c;grid();}});
+$('grid').addEventListener('click',e=>{const b=e.target.closest('button');if(b)add(CAT.find(i=>i.id===b.dataset.id));});
+$('undo').onclick=()=>{
+  if(!history.length)return;
+  const prev=history.pop();
+  restoreSnapshot(prev);
+  updateUndoButton();
+  markEdited();
+  toast('한 단계 되돌렸어요. ↶');
+};
+$('reset').onclick=()=>{
+  if(!st.items.length){toast('지울 가구나 소품이 없어요.');return;}
+  askConfirm({
+    title:'처음부터 다시 만들까요?',
+    message:'지금 꾸민 <strong>가구와 소품이 모두 사라져요.</strong>',
+    okText:'처음부터',
+    onConfirm:()=>{
+      pushHistory();markEdited();
+      st.items=[];select(null);drawAll();
+    }
+  });
+};
+
+
+// Class / Team / Number accept digits only.
+['sGrade','sCls','sTeam','sNum'].forEach(id=>{
+  const input=$(id);
+  input.addEventListener('input',()=>{
+    input.value=input.value.replace(/\D/g,'');
+  });
+});
+
+
+let pendingConfirm=null;
+function askConfirm({title,message,okText='확인',onConfirm}){
+  pendingConfirm=onConfirm||null;
+  $('confirmTitle').textContent=title;
+  $('confirmMessage').innerHTML=message;
+  $('confirmOk').textContent=okText;
+  $('confirmModal').classList.remove('hidden');
+  setTimeout(()=>$('confirmCancel').focus(),0);
+}
+function closeConfirm(){
+  $('confirmModal').classList.add('hidden');
+  pendingConfirm=null;
+}
+$('confirmClose').onclick=closeConfirm;
+$('confirmCancel').onclick=closeConfirm;
+$('confirmModal').addEventListener('click',e=>{if(e.target===$('confirmModal'))closeConfirm();});
+$('confirmOk').onclick=()=>{
+  const fn=pendingConfirm;
+  $('confirmModal').classList.add('hidden');
+  pendingConfirm=null;
+  if(fn)fn();
+};
+
+// submission helpers
+function getStudentInfo(){
+  const grade=$('sGrade').value.trim();
+  const classNo=$('sCls').value.trim();
+  return {
+    grade,
+    classNo,
+    className:(grade&&classNo)?`${grade}-${classNo}`:'',
+    team:$('sTeam').value.trim(),
+    number:$('sNum').value.trim(),
+    studentName:$('sName').value.trim(),
+    room:ROOM_LABELS[st.room]
+  };
+}
+
+// The English blanks are practice-only.
+// They stay on the student's screen and are never included in submission data or saved images.
+
+function showNotice(kind,title,message){
+  const modal=$('noticeModal');
+  const icon=$('noticeIcon');
+  const titleEl=$('noticeTitle');
+  const msg=$('noticeMessage');
+  const icons={ok:'✅',err:'⚠️',fail:'❌'};
+  icon.textContent=icons[kind]||'ℹ️';
+  titleEl.textContent=title;
+  msg.innerHTML=message;
+  modal.classList.remove('hidden');
+  setTimeout(()=>$('noticeClose').focus(),0);
+}
+function closeNotice(){ $('noticeModal').classList.add('hidden'); }
+$('noticeClose').onclick=closeNotice;
+$('noticeOk').onclick=closeNotice;
+$('noticeModal').addEventListener('click',e=>{if(e.target===$('noticeModal'))closeNotice();});
+
+function validateSubmission(){
+  const info=getStudentInfo();
+  if(!info.grade||!info.classNo||!info.team||!info.number||!info.studentName){
+    showNotice('err','입력 정보를 확인해 주세요!','<strong>학년, 반, 모둠, 번호, 이름</strong>을 모두 입력해 주세요.');
+    return false;
+  }
+  if(!st.items.length){
+    showNotice('err','방을 먼저 꾸며 주세요!','가구나 소품을 <strong>한 개 이상</strong> 배치한 뒤 제출해 주세요.');
+    return false;
+  }
+  return true;
+}
+
+async function makeSubmissionCanvas(){
+  if(typeof html2canvas==='undefined')throw new Error('Image tool did not load.');
+  select(null);
+
+  const source=await html2canvas(room,{
+    scale:2,
+    backgroundColor:null,
+    logging:false,
+    useCORS:true
+  });
+
+  const info=getStudentInfo();
+  const cv=document.createElement('canvas');
+  cv.width=source.width;
+  cv.height=source.height;
+  const ctx=cv.getContext('2d');
+
+  // The custom font is used only for the finished/exported image.
+  if(document.fonts && document.fonts.load){
+    try{
+      await document.fonts.load('32px \"DoolgiMayoGothic\"');
+      await document.fonts.ready;
+    }catch(_){}
+  }
+
+  // Full-opacity room image with text overlaid on top.
+  ctx.fillStyle='#ffffff';
+  ctx.fillRect(0,0,cv.width,cv.height);
+  ctx.globalAlpha=1;
+  ctx.drawImage(source,0,0);
+
+  const title=ROOM_LABELS[st.room];
+  const details=[
+    info.grade && `${info.grade}학년`,
+    info.classNo && `${info.classNo}반`,
+    info.team && `${info.team}모둠`,
+    info.number && `${info.number}번`,
+    info.studentName
+  ].filter(Boolean).join(' ');
+
+  const titleSize=Math.max(34,Math.round(cv.width*0.052));
+  const infoSize=Math.max(27,Math.round(cv.width*0.038));
+  const pad=Math.max(16,Math.round(cv.width*0.02));
+
+  ctx.textAlign='center';
+  ctx.textBaseline='middle';
+  ctx.lineJoin='round';
+  ctx.strokeStyle='rgba(255,255,255,0.92)';
+  ctx.fillStyle='#172033';
+
+  ctx.font=`normal ${titleSize}px "DoolgiMayoGothic","Apple SD Gothic Neo","Malgun Gothic",sans-serif`;
+  ctx.lineWidth=Math.max(7,Math.round(titleSize*0.16));
+  ctx.strokeText(title,cv.width/2,pad+titleSize*0.72);
+  ctx.fillText(title,cv.width/2,pad+titleSize*0.72);
+
+  if(details){
+    ctx.font=`normal ${infoSize}px "DoolgiMayoGothic","Apple SD Gothic Neo","Malgun Gothic",sans-serif`;
+    ctx.lineWidth=Math.max(6,Math.round(infoSize*0.18));
+    const y=cv.height-pad-infoSize*0.72;
+    ctx.strokeText(details,cv.width/2,y);
+    ctx.fillText(details,cv.width/2,y);
+  }
+
+  return cv;
+}
+
+async function makeRoomImageData(){
+  const cv=await makeSubmissionCanvas();
+  return cv.toDataURL('image/jpeg',0.92);
+}
+
+
+
+$('submit').onclick=async()=>{
+  if(!validateSubmission())return;
+  const btn=$('submit');
+  btn.disabled=true;
+  const oldText=btn.textContent;
+  btn.textContent='제출 중...';
+  try{
+    const info=getStudentInfo();
+    const imageData=await makeRoomImageData();
+    const submissionId='s_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,10);
+    const body=new URLSearchParams({
+      submissionId,
+      className:info.className,
+      team:info.team,
+      number:info.number,
+      studentName:info.studentName,
+      room:info.room,
+      imageData
+    });
+
+    // Apps Script web apps are submitted with no-cors.
+    // If the browser successfully sends the request, show success immediately.
+    await fetch(SUBMIT_URL,{method:'POST',mode:'no-cors',body});
+
+    submittedOnce=true;
+    btn.disabled=false;
+    btn.textContent='Edit & Resubmit';
+
+    showNotice(
+      'ok',
+      '제출 완료!',
+      `${info.grade}학년 ${info.classNo}반 ${info.team}모둠 ${info.number}번<br><strong>${info.studentName}</strong> ${info.room}`
+    );
+    toast('제출 완료! 🎉');
+  }catch(err){
+    console.error(err);
+    btn.disabled=false;
+    btn.textContent=oldText;
+    showNotice(
+      'fail',
+      '제출에 실패했어요',
+      '인터넷 연결을 확인한 뒤 다시 시도해 주세요.'
+    );
+    toast('제출에 실패했어요. 다시 시도해 주세요.');
+  }
+};
+
+// final submission image -> JPG preview / download
+$('share').onclick=async()=>{
+  select(null);toast('제출 이미지를 만들고 있어요... 🖼️');
+  if(typeof html2canvas==='undefined'){toast('이미지 도구를 불러오지 못했어요.');return;}
+  try{
+    const cv=await makeSubmissionCanvas();
+    const who=[$('sGrade').value.trim()&&'Grade'+$('sGrade').value.trim(),$('sCls').value.trim()&&'Class'+$('sCls').value.trim(),$('sTeam').value.trim()&&'Team'+$('sTeam').value.trim(),$('sNum').value.trim()&&'No'+$('sNum').value.trim(),$('sName').value.trim()].filter(Boolean).join('_');
+    const name=(who?who+'_':'')+'My_Dream_'+NAMES[st.room].replace(/\s+/g,'_')+'.jpg';
+    cv.toBlob(async blob=>{
+      let saved=false;
+      try{
+        const dl=window.claude?await window.claude.use('downloads'):null;
+        if(dl&&blob){await dl.save({filename:name,data:blob});saved=true;toast('JPG로 저장했어요! 🎉');}
+      }catch(err){if(err&&err.code==='declined'){toast('저장을 취소했어요.');return;}}
+      if(!saved){$('poster').src=cv.toDataURL('image/jpeg',0.92);$('modal').classList.remove('hidden');}
+    },'image/jpeg',0.92);
+  }catch(err){
+    console.error(err);
+    toast('이미지를 만들지 못했어요. 다시 시도해 주세요.');
+  }
+};
+$('close').onclick=()=>$('modal').classList.add('hidden');
+
+buildPickers();grid();drawAll();setWall('w-pink');setFloor('f-wood');updateUndoButton();
+</script>
+</body>
+</html>
+
